@@ -20,7 +20,7 @@ function Home() {
       const params = new URLSearchParams();
       for(const key in filters) params.append(key, filters[key]);
 
-      const response = await fetch(`http://localhost:3000/api/joke?${params.toString()}`);
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}?${params.toString()}`);
       console.log(params.toString());
       const data = await response.json();
       setJoke({ setup:data.setup, delivery:data.delivery });
